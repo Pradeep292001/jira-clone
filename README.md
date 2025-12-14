@@ -1,10 +1,21 @@
 # 📋 Jira Clone - Project Management Application
 
-A comprehensive project management application built with React, featuring Kanban boards, sprint planning, and issue tracking - just like Jira!
+A comprehensive project management application built with React and **Firebase**, featuring Kanban boards, sprint planning, and **real-time multi-device collaboration** - just like Jira!
 
 ![React](https://img.shields.io/badge/React-18.3.1-61dafb?style=for-the-badge&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5.4.2-646cff?style=for-the-badge&logo=vite)
+![Firebase](https://img.shields.io/badge/Firebase-10.7.1-ffca28?style=for-the-badge&logo=firebase)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+## 🚀 NEW: Multi-Device Collaboration!
+
+This app now uses **Firebase** for real-time sync across multiple devices:
+- ✨ Changes appear instantly on all devices
+- ☁️ Cloud data storage (not browser-only anymore!)
+- 👥 Multiple users can collaborate in real-time
+- 🔐 Secure Firebase Authentication
+
+**⚠️ Firebase Setup Required** - See [FIREBASE_SETUP.md](FIREBASE_SETUP.md) for 5-minute setup
 
 ## ✨ Features
 
@@ -23,12 +34,13 @@ A comprehensive project management application built with React, featuring Kanba
 
 - Node.js 16+ installed
 - npm or yarn package manager
+- **Firebase account** (free) - [Create one here](https://firebase.google.com)
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/jira-clone.git
+git clone https://github.com/Pradeep292001/jira-clone.git
 
 # Navigate to project directory
 cd jira-clone
@@ -36,18 +48,19 @@ cd jira-clone
 # Install dependencies
 npm install
 
+# ⚠️ IMPORTANT: Set up Firebase
+# Follow the guide in FIREBASE_SETUP.md to:
+# 1. Create Firebase project
+# 2. Enable Authentication & Firestore
+# 3. Update src/services/firebase.js with your config
+
 # Start development server
 npm run dev
 ```
 
 The application will be available at `http://localhost:3000`
 
-### Demo Credentials
-
-```
-Email: john@example.com
-Password: password
-```
+**First time?** You'll need to register a new account since Firebase starts empty.
 
 ## 🛠️ Tech Stack
 

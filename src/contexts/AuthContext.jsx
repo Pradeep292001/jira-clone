@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { login as apiLogin, register as apiRegister, logout as apiLogout, getCurrentUser } from '../services/api';
+import { login as apiLogin, register as apiRegister, logout as apiLogout, onAuthChange } from '../services/api';
 
 const AuthContext = createContext();
 
@@ -16,33 +16,30 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check if user is logged in
-        const currentUser = getCurrentUser();
-        if (currentUser) {
-            setUser(currentUser);
-        }
-        setLoading(false);
+        // Listen to Firebase auth state changes
+        const unsubscribe = onAuthChange((user) => {
+            setUser(user);
+            setLoading(false);
+        });
+
+        return () => unsubscribe();
     }, []);
 
     const login = async (email, password) => {
-        const result = apiLogin(email, password);
-        if (result.success) {
-            setUser(result.user);
-        }
+        const result = await apiLogin(email, password);
+        // User state will be updated by onAuthChange listener
         return result;
     };
 
     const register = async (userData) => {
-        const result = apiRegister(userData);
-        if (result.success) {
-            setUser(result.user);
-        }
+        const result = await apiRegister(userData);
+        // User state will be updated by onAuthChange listener
         return result;
     };
 
-    const logout = () => {
-        apiLogout();
-        setUser(null);
+    const logout = async () => {
+        await apiLogout();
+        // User state will be updated by onAuthChange listener
     };
 
     const value = {

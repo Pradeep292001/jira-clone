@@ -16,13 +16,14 @@ const Projects = () => {
         loadProjects();
     }, []);
 
-    const loadProjects = () => {
-        setProjects(getProjects());
+    const loadProjects = async () => {
+        const projectsData = await getProjects();
+        setProjects(projectsData);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = createProject(formData);
+        const result = await createProject(formData);
         if (result.success) {
             setShowCreateModal(false);
             setFormData({ name: '', key: '', description: '', category: 'software' });
@@ -30,8 +31,8 @@ const Projects = () => {
         }
     };
 
-    const getProjectStats = (projectId) => {
-        const issues = getIssues({ projectId });
+    const getProjectStats = async (projectId) => {
+        const issues = await getIssues({ projectId });
         return {
             total: issues.length,
             done: issues.filter(i => i.status === 'done').length

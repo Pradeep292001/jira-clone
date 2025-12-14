@@ -14,12 +14,22 @@ const Dashboard = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        setProjects(getProjects());
-        const allIssues = getIssues();
-        setIssues(allIssues);
-        setMyIssues(allIssues.filter(i => i.assignee === user.id));
-        setUsers(getAllUsers());
-    }, [user.id]);
+        const loadData = async () => {
+            const projectsData = await getProjects();
+            setProjects(projectsData);
+
+            const allIssues = await getIssues();
+            setIssues(allIssues);
+            setMyIssues(allIssues.filter(i => i.assignee === user.id));
+
+            const usersData = await getAllUsers();
+            setUsers(usersData);
+        };
+
+        if (user?.id) {
+            loadData();
+        }
+    }, [user?.id]);
 
     const stats = {
         totalIssues: issues.length,
