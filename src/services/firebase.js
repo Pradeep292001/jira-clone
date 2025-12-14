@@ -1,20 +1,20 @@
 // Firebase Configuration
-// Replace this with your own Firebase project config from https://console.firebase.google.com
-// Project Settings -> General -> Your apps -> Web app config
+// Your Hallmark Firebase Project Configuration
+// Project: hallmark-bdc26
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
-// Demo Firebase configuration (replace with your own)
-// To get your config: https://console.firebase.google.com -> Project Settings -> General
+// Firebase configuration for Hallmark project
 const firebaseConfig = {
-    apiKey: "AIzaSyDemoKey-ReplaceWithYourOwnFirebaseConfig",
-    authDomain: "jira-clone-demo.firebaseapp.com",
-    projectId: "jira-clone-demo",
-    storageBucket: "jira-clone-demo.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
+    apiKey: "AIzaSyCns_-lBcCOKZktKxUagt58XJ8A4SwUiAw",
+    authDomain: "hallmark-bdc26.firebaseapp.com",
+    projectId: "hallmark-bdc26",
+    storageBucket: "hallmark-bdc26.firebasestorage.app",
+    messagingSenderId: "692701856466",
+    appId: "1:692701856466:web:c53bd374cd1ba1e125230b",
+    measurementId: "G-V78H5LLZ8R"
 };
 
 // Initialize Firebase
